@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-
-output = ""
 for letter in range(97, 123):
-    if chr(letter) != 'q' and chr(letter) != 'e':
-        output += chr(letter)
-
-print(output, end="")
+if chr(letter) is not 'q' and chr(letter) is not 'e':
+print("{}".format(chr(letter)), end="")
