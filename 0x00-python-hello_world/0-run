@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "C is fun!"
+eval "python3 $PYFILE"
