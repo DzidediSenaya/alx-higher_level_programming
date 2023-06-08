@@ -7,4 +7,3 @@ for arg in sys.argv[1:]:
     result += int(arg)
 
 print(result)
-

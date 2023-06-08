@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import dis
 
+
 def print_hidden_names():
     with open("hidden_4.pyc", "rb") as file:
         magic = file.read(4)
@@ -19,8 +20,12 @@ def print_hidden_names():
                 const = dis.get_instructions("", b"\x01\x00" + arg)
                 const_op = next(const)
                 const_value = const_op.argval
-                if isinstance(const_value, str) and not const_value.startswith("__"):
+
+                if (
+                    isinstance(const_value, str) and
+                    not const_value.startswith("__")
+                ):
                     print(const_value)
 
-print_hidden_names()
 
+print_hidden_names()

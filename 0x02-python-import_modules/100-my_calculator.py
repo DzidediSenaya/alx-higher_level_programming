@@ -25,4 +25,3 @@ else:
     sys.exit(1)
 
 print(f"{a} {operator} {b} = {result}")
-
