@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import types
 import hidden_4
 
