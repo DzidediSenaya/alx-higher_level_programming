@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
-def divisible_by_2(my_list=[]):
-    return [num % 2 == 0 for num in my_list]
+def delete_at(my_list=[], idx=0):
+    if idx < 0 or idx >= len(my_list):
+        return my_list
 
-my_list = [0, 1, 2, 3, 4, 5, 6]
-list_result = divisible_by_2(my_list)
+    
+    new_list = []
+    for i, item in enumerate(my_list):
+        if i != idx:
+            new_list.append(item)
 
-i = 0
-while i < len(list_result):
-    print("{:d} {:s} divisible by 2".format(my_list[i],
-          "is" if list_result[i] else "is not"))
-    i += 1
+    return new_list
