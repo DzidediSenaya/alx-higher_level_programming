@@ -28,6 +28,7 @@ void print_python_list(PyObject *p)
 	}
 }
 
+
 /**
  * print_python_bytes - Prints basic information about a Python bytes object.
  * @p: Pointer to the Python bytes object.
@@ -49,7 +50,7 @@ void print_python_bytes(PyObject *p)
 	str = PyBytes_AsString(p);
 
 	printf("  size: %zd\n", size);
-	printf("  trying string: %s\n", str);
+	printf("  trying string: %s\n", str ? str : "(unknown)");
 
 	printf("  first %zd bytes:", size + 1 > 10 ? 10 : size + 1);
 	for (i = 0; i < size + 1 && i < 10; i++)
