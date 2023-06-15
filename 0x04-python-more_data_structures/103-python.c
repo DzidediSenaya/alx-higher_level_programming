@@ -11,13 +11,12 @@ void print_python_bytes(PyObject *p);
 void print_python_list(PyObject *p)
 {
 	Py_ssize_t size, i;
-	PyObject *item;
 
-	size = ((PyVarObject *)p)->ob_size;
+	size = PyList_Size(p);
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %zd\n", size);
 
-	if (!PyList_Check(p))
+	if (!PyList_CheckExact(p))
 	{
 		printf("  [ERROR] Invalid List Object\n");
 		return;
@@ -27,15 +26,16 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		item = ((PyListObject *)p)->ob_item[i];
+		PyObject *item = PyList_GetItem(p, i);
 		printf("Element %zd: %s\n", i, Py_TYPE(item)->tp_name);
-		if (PyBytes_Check(item))
+		if (PyBytes_CheckExact(item))
 			print_python_bytes(item);
 	}
 }
 
 /**
- * print_python_bytes - Prints basic information about a Python bytes object.
+ * print_python_bytes - Prints basic information about a
+ * Python bytes object.
  * @p: Pointer to the Python bytes object.
  */
 void print_python_bytes(PyObject *p)
@@ -45,14 +45,14 @@ void print_python_bytes(PyObject *p)
 
 	printf("[.] bytes object info\n");
 
-	if (!PyBytes_Check(p))
+	if (!PyBytes_CheckExact(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	size = ((PyVarObject *)p)->ob_size;
-	str = ((PyBytesObject *)p)->ob_sval;
+	size = PyBytes_Size(p);
+	str = PyBytes_AsString(p);
 
 	printf("  size: %zd\n", size);
 	printf("  trying string: %s\n", str);
@@ -62,4 +62,3 @@ void print_python_bytes(PyObject *p)
 		printf(" %02hhx", str[i]);
 	printf("\n");
 }
-
