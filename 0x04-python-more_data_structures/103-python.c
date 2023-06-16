@@ -27,15 +27,15 @@ void print_python_list(PyObject *p)
 	for (i = 0; i < size; i++)
 	{
 		PyObject *item = PyList_GetItem(p, i);
-		printf("Element %zd: %s\n", i, Py_TYPE(item)->tp_name);
+		PyTypeObject *item_type = Py_TYPE(item);
+		printf("Element %zd: %s\n", i, item_type->tp_name);
 		if (PyBytes_CheckExact(item))
 			print_python_bytes(item);
 	}
 }
 
 /**
- * print_python_bytes - Prints basic information about a
- * Python bytes object.
+ * print_python_bytes - Prints basic information about a Python bytes object.
  * @p: Pointer to the Python bytes object.
  */
 void print_python_bytes(PyObject *p)
