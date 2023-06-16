@@ -16,7 +16,7 @@ void print_python_list(PyObject *p)
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %zd\n", size);
 
-	if (!PyList_CheckExact(p))
+	if (!PyList_Check(p))
 	{
 		printf("  [ERROR] Invalid List Object\n");
 		return;
@@ -27,10 +27,19 @@ void print_python_list(PyObject *p)
 	for (i = 0; i < size; i++)
 	{
 		PyObject *item = PyList_GetItem(p, i);
-		PyTypeObject *item_type = Py_TYPE(item);
-		printf("Element %zd: %s\n", i, item_type->tp_name);
-		if (PyBytes_CheckExact(item))
+		PyObject *item_type = PyObject_Type(item);
+		PyObject *item_bytes = PyObject_Str(item_type);
+		char *type_str = PyUnicode_AsUTF8(item_bytes);
+		Py_ssize_t type_length = PyUnicode_GET_LENGTH(item_bytes);
+
+		printf("Element %zd: %s\n", i, type_str);
+
+		if (PyBytes_Check(item))
 			print_python_bytes(item);
+
+		Py_DECREF(item_type);
+		Py_DECREF(item_bytes);
+		Py_DECREF(item);
 	}
 }
 
@@ -45,7 +54,7 @@ void print_python_bytes(PyObject *p)
 
 	printf("[.] bytes object info\n");
 
-	if (!PyBytes_CheckExact(p))
+	if (!PyBytes_Check(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
