@@ -26,20 +26,21 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		PyObject *item = PyList_GetItem(p, i);
-		PyObject *item_type = PyObject_Type(item);
+		PyObject *item = PyList_GET_ITEM(p, i);
+		PyObject *item_type = Py_TYPE(item);
 		PyObject *item_bytes = PyObject_Str(item_type);
-		char *type_str = PyUnicode_AsUTF8(item_bytes);
-		Py_ssize_t type_length = PyUnicode_GET_LENGTH(item_bytes);
+		PyObject *item_bytes_encoded = PyUnicode_AsUTF8String(item_bytes);
+		char *type_str = PyBytes_AsUTF8(item_bytes_encoded);
 
 		printf("Element %zd: %s\n", i, type_str);
 
 		if (PyBytes_Check(item))
 			print_python_bytes(item);
 
-		Py_DECREF(item_type);
-		Py_DECREF(item_bytes);
-		Py_DECREF(item);
+		Py_XDECREF(item);
+		Py_XDECREF(item_type);
+		Py_XDECREF(item_bytes);
+		Py_XDECREF(item_bytes_encoded);
 	}
 }
 
@@ -50,6 +51,7 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
 	Py_ssize_t size, i;
+	Py_ssize_t max_size = 10;
 	char *str;
 
 	printf("[.] bytes object info\n");
@@ -60,14 +62,14 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 
-	size = PyBytes_Size(p);
-	str = PyBytes_AsString(p);
+	PyBytes_AsUTF8AndSize(p, &str, &size);
 
 	printf("  size: %zd\n", size);
 	printf("  trying string: %s\n", str);
 
-	printf("  first %zd bytes:", size + 1 > 10 ? 10 : size + 1);
-	for (i = 0; i < size + 1 && i < 10; i++)
+	printf("  first %zd bytes:", size < max_size ? size + 1 : max_size);
+	for (i = 0; i < size && i < max_size; i++)
 		printf(" %02hhx", str[i]);
 	printf("\n");
 }
+
