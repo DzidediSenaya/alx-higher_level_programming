@@ -4,12 +4,10 @@ import sys
 
 def safe_print_integer_err(value):
     try:
-        print("{:d}".format(int(value)))
+        print("{:d}".format(value))
         return True
-    except ValueError:
-        print("Exception: Invalid literal for int() with base 10: '{}'"
-              .format(value), file=sys.stderr)
-        return False
-    except Exception as e:
-        print("Exception: {}".format(e), file=sys.stderr)
+    except:
+        error_message = "Exception: Unknown format code 'd' for object of type '{}'"
+        error_message = error_message.format(value.__class__.__name__)
+        print(error_message, file=sys.stderr)
         return False
