@@ -4,20 +4,12 @@ import sys
 
 def safe_print_integer_err(value):
     try:
-        print("{:d}".format(value))
+        print("{:d}".format(int(value)))
         return True
-    except (ValueError, TypeError) as e:
-        error_message = "Exception: {}".format(e)
-        print(error_message, file=sys.stderr)
+    except ValueError:
+        print("Exception: Invalid literal for int() with base 10: '{}'"
+              .format(value), file=sys.stderr)
         return False
-
-
-safe_print_integer_err = __import__('100-safe_print_integer_err').safe_print_integer_err
-
-value = [89]
-print(safe_print_integer_err(value))
-
-safe_print_integer_err = __import__('100-safe_print_integer_err').safe_print_integer_err
-
-value = None
-print(safe_print_integer_err(value))
+    except Exception as e:
+        print("Exception: {}".format(e), file=sys.stderr)
+        return False
