@@ -19,16 +19,17 @@ void print_python_list(PyObject *p)
         return;
     }
 
-    size = PyObject_Length(p);
+    size = ((PyVarObject *)p)->ob_size;
     printf("[*] Size of the Python List = %ld\n", size);
-    printf("[*] Allocated = %ld\n", ((PyListObject *)p)->ob_base.ob_size);
+    printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 
     for (i = 0; i < size; i++)
     {
-        item = PyList_GetItem(p, i);
-        printf("Element %ld: %s\n", i, item->ob_type->tp_name);
+        item = ((PyListObject *)p)->ob_item[i];
+        printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
     }
 }
+
 
 /**
  * print_python_bytes - Prints basic information about a
