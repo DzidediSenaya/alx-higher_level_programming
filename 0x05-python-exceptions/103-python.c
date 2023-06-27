@@ -13,23 +13,31 @@ void print_python_list(PyObject *p)
     PyObject *item;
 
     printf("[*] Python list info\n");
+
     if (!PyList_Check(p))
     {
         printf("  [ERROR] Invalid List Object\n");
         return;
     }
 
-    size = ((PyVarObject *)p)->ob_size;
+    size = PyObject_Length(p);
+
+    if (size == -1)
+    {
+        printf("  [ERROR] Failed to get the list size\n");
+        return;
+    }
+
     printf("[*] Size of the Python List = %ld\n", size);
     printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 
     for (i = 0; i < size; i++)
     {
-        item = ((PyListObject *)p)->ob_item[i];
+        item = PyList_GetItem(p, i);
         printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
     }
 }
-
+ 
 
 /**
  * print_python_bytes - Prints basic information about a
