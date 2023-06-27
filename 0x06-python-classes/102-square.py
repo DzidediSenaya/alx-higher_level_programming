@@ -85,18 +85,21 @@ class Square:
         Args:
             other (Square): The other square to compare with
         Returns:
-            bool: True if the area of the first square is greater than the second square, False otherwise
+            bool: True if the area of the first square is greater
+            than the second square, False otherwise
         """
         return self.area() > other.area()
 
     def __ge__(self, other):
         """
-        Greater than or equal to operator for comparing two squares based on their area
+        Greater than or equal to operator for comparing two
+        squares based on their area
 
         Args:
             other (Square): The other square to compare with
         Returns:
-            bool: True if the area of the first square is greater than or equal to the second square, False otherwise
+            bool: True if the area of the first square is greater than
+            or equal to the second square, False otherwise
         """
         return self.area() >= other.area()
 
@@ -107,17 +110,20 @@ class Square:
         Args:
             other (Square): The other square to compare with
         Returns:
-            bool: True if the area of the first square is less than the second square, False otherwise
+            bool: True if the area of the first square is less than the second
+            square, False otherwise
         """
         return self.area() < other.area()
 
     def __le__(self, other):
         """
-        Less than or equal to operator for comparing two squares based on their area
+        Less than or equal to operator for comparing
+        two squares based on their area
 
         Args:
             other (Square): The other square to compare with
         Returns:
-            bool: True if the area of the first square is less than or equal to the second square, False otherwise
+            bool: True if the area of the first square is less
+            than or equal to the second square, False otherwise
         """
         return self.area() <= other.area()
