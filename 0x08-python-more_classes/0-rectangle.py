@@ -4,12 +4,14 @@ Module: 0-rectangle
 Defines an empty class Rectangle that represents a rectangle.
 """
 
+
 class Rectangle:
     """
     Rectangle class
     """
 
     pass
+
 
 # Test the code
 if __name__ == "__main__":

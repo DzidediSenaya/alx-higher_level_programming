@@ -1,8 +1,23 @@
 #!/usr/bin/python3
+
 import sys
 
 
 def is_safe(board, row, col, N):
+    """
+    Check if it is safe to place a queen at the specified
+    position on the board.
+
+    Args:
+        board (list): The current state of the chessboard.
+        row (int): The row index of the position to check.
+        col (int): The column index of the position to check.
+        N (int): The size of the chessboard.
+
+    Returns:
+        bool: True if it is safe to place a queen, False otherwise.
+
+    """
     # Check if there is a queen in the same column
     for i in range(row):
         if board[i][col] == 1:
@@ -28,6 +43,16 @@ def is_safe(board, row, col, N):
 
 
 def solve_nqueens(board, row, N, solutions):
+    """
+    Recursively solve the N-queens problem.
+
+    Args:
+        board (list): The current state of the chessboard.
+        row (int): The current row to place the queen.
+        N (int): The size of the chessboard.
+        solutions (list): A list to store the found solutions.
+
+    """
     if row == N:
         # Found a solution, append it to the list of solutions
         queens = []
@@ -48,6 +73,13 @@ def solve_nqueens(board, row, N, solutions):
 
 
 def nqueens(N):
+    """
+    Solve the N-queens problem and print the solutions.
+
+    Args:
+        N (int): The size of the chessboard.
+
+    """
     # Check if N is an integer greater or equal to 4
     if not isinstance(N, int):
         print("N must be a number")
