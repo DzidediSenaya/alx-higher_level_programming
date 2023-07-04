@@ -1,0 +1,45 @@
+>>> matrix = [[1, 2], [3, 4]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+[[0.5, 1.0], [1.5, 2.0]]
+
+>>> matrix = [[10, 20, 30], [40, 50, 60], [70, 80, 90]]
+>>> div = 3.5
+>>> matrix_divided(matrix, div)
+[[2.86, 5.71, 8.57], [11.43, 14.29, 17.14], [20.0, 22.86, 25.71]]
+
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> div = 0
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+>>> matrix = []
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix = [[1, 2], [3, 4, 5]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
+
+>>> matrix = [[1, 2], [3, "four"]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix = [[1, 2], [3, 4]]
+>>> div = "two"
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
+

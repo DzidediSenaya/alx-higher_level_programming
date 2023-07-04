@@ -1,0 +1,27 @@
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+>>> say_my_name("Jane")
+My name is Jane 
+
+>>> say_my_name("Alex", last_name="Smith")
+My name is Alex Smith
+
+>>> say_my_name(first_name="Alice", last_name="Johnson")
+My name is Alice Johnson
+
+>>> say_my_name(123, "Doe")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+>>> say_my_name("John", 456)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+>>> say_my_name(123, 456)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
