@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Defines a locked class."""
+
+
 class LockedClass:
     """
     Restricts user from dynamically creating  new instance attributes
