@@ -1,9 +1,8 @@
 #!/usr/bin/python3
+"""Defines a locked class."""
 class LockedClass:
-    def __setattr__(self, name, value):
-        if hasattr(self, name):
-            super().__setattr__(name, value)
-        elif name == 'first_name':
-            super().__setattr__(name, value)
-        else:
-            raise AttributeError("'LockedClass' object has no attribute '{}'".format(name))
+    """
+    Restricts user from dynamically creating  new instance attributes
+    except for 'first_name'
+    """
+    __slots__ = ['first_name']
