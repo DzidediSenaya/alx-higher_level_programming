@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+""" Defines a Rectangle """
+
+
 class Rectangle:
     """
     The Rectangle class represents a rectangle object with a width and height.
