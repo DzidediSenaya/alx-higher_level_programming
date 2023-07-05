@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a rectangle Class"""
+"""Defines a rectangle Class """
 
 
 class Rectangle:
@@ -129,12 +129,12 @@ class Rectangle:
         return rect_str.rstrip()
 
     def __repr__(self):
-    """
-    Return a string representation that can be used to
-    recreate the rectangle.
+        """
+        Return a string representation that can be used to
+        recreate the rectangle.
 
-    Returns:
-        str: A string representation of the rectangle.
+        Returns:
+            str: A string representation of the rectangle.
 
-    """
-    return "Rectangle({}, {})".format(self.width, self.height)
+        """
+        return "Rectangle({}, {})".format(self.width, self.height)
