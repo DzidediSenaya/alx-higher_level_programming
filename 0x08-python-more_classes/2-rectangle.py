@@ -9,7 +9,6 @@ class Rectangle:
     Attributes:
         width (int): The width of the rectangle.
         height (int): The height of the rectangle.
-
     """
 
     def __init__(self, width=0, height=0):
@@ -19,7 +18,6 @@ class Rectangle:
         Args:
             width (int): The width of the rectangle (default: 0).
             height (int): The height of the rectangle (default: 0).
-
         """
         self.width = width
         self.height = height
@@ -31,7 +29,6 @@ class Rectangle:
 
         Returns:
             int: The width of the rectangle.
-
         """
         return self.__width
 
@@ -46,7 +43,6 @@ class Rectangle:
         Raises:
             TypeError: If the width is not an integer.
             ValueError: If the width is less than 0.
-
         """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
@@ -61,7 +57,6 @@ class Rectangle:
 
         Returns:
             int: The height of the rectangle.
-
         """
         return self.__height
 
@@ -76,7 +71,6 @@ class Rectangle:
         Raises:
             TypeError: If the height is not an integer.
             ValueError: If the height is less than 0.
-
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
@@ -90,7 +84,6 @@ class Rectangle:
 
         Returns:
             int: The area of the rectangle.
-
         """
         return self.width * self.height
 
@@ -100,6 +93,7 @@ class Rectangle:
 
         Returns:
             int: The perimeter of the rectangle.
-
         """
+        if self.width == 0 or self.height == 0:
+            return 0
         return 2 * (self.width + self.height)
