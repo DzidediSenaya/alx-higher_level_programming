@@ -3,12 +3,13 @@
 Module for lazy matrix multiplication using NumPy
 """
 
+
 import numpy as np
 
 
 def lazy_matrix_mul(m_a, m_b):
     """
-    Function that multiplies two matrices using NumPy.
+    Perform lazy matrix multiplication using NumPy.
 
     Args:
         m_a (list): First matrix (list of lists)
