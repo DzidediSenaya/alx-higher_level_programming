@@ -34,7 +34,8 @@ class Rectangle(BaseGeometry):
     Inherits from BaseGeometry.
 
     Public Methods:
-        __init__(self, width, height): Initializes a rectangle with the given width and height.
+        __init__(self, width, height): Initializes a rectangle with the
+        given width and height.
     """
 
     def __init__(self, width, height):
