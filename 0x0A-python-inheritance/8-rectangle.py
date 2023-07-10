@@ -36,7 +36,6 @@ class Rectangle(BaseGeometry):
     Public Methods:
         __init__(self, width, height): Initializes a rectangle with the
         given width and height.
-        area(self): Calculates and returns the area of the rectangle.
     """
 
     def __init__(self, width, height):
@@ -55,12 +54,3 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
-
-    def area(self):
-        """
-        Calculates and returns the area of the rectangle.
-
-        Returns:
-            int: The area of the rectangle.
-        """
-        return self.__width * self.__height
