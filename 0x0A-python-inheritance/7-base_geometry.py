@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+This module contains a base class and two functions
+"""
+
 
 class BaseGeometry:
     """

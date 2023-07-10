@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+This module contains a rebellious integer class and
+two functions
+"""
+
+
 class MyInt(int):
     """
     A class representing a rebellious integer.

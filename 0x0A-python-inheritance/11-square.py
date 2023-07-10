@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This module contains a square class and _Str_ function
+"""
+
+
 class Square(Rectangle):
     """
     A class representing a square.

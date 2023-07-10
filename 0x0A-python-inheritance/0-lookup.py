@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
 """
-This module contains the lookup function and two classes: MyClass1 and MyClass2.
+This module contains the lookup function and two classes:
+MyClass1 and MyClass2.
 """
+
 
 def lookup(obj):
     """
