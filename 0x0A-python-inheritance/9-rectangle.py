@@ -4,33 +4,53 @@ This module contains a rectangle class and _init_ function
 """
 
 
+class BaseGeometry:
+    """
+    A base class for geometry-related operations.
+    """
+
+    def integer_validator(self, name, value):
+        """
+        Validates that a value is an integer and greater than 0.
+
+        Args:
+            name (str): The name of the value.
+            value (int): The value to be validated.
+
+        Raises:
+            TypeError: If the value is not an integer.
+            ValueError: If the value is not greater than 0.
+        """
+        if not isinstance(value, int):
+            raise TypeError(f"{name} must be an integer")
+        if value <= 0:
+            raise ValueError(f"{name} must be greater than 0")
+
+
 class Rectangle(BaseGeometry):
     """
-    A class representing a rectangle.
+    Represents a rectangle.
 
     Inherits from BaseGeometry.
 
     Public Methods:
-        __init__(self, width, height): Initializes a rectangle
-        with the given width and height.
+        __init__(self, width, height): Initializes a rectangle with
+        the given width and height.
         area(self): Calculates and returns the area of the rectangle.
-
-    Private Attributes:
-        __width (int): The width of the rectangle.
-        __height (int): The height of the rectangle.
+        __str__(self): Returns the string representation of the rectangle.
     """
 
     def __init__(self, width, height):
         """
-        Initialize a rectangle with the given width and height.
+        Initializes a rectangle with the given width and height.
 
         Args:
             width (int): The width of the rectangle.
             height (int): The height of the rectangle.
 
         Raises:
-            TypeError: If either width or height is not an integer.
-            ValueError: If either width or height is not positive.
+            TypeError: If width or height is not an integer.
+            ValueError: If width or height is not a positive integer.
         """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
@@ -39,7 +59,7 @@ class Rectangle(BaseGeometry):
 
     def area(self):
         """
-        Calculate and return the area of the rectangle.
+        Calculates and returns the area of the rectangle.
 
         Returns:
             int: The area of the rectangle.
@@ -48,7 +68,7 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """
-        Return the string representation of the rectangle.
+        Returns the string representation of the rectangle.
 
         Returns:
             str: The string representation of the rectangle.
