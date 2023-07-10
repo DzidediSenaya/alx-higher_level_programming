@@ -3,6 +3,7 @@
 This module contains a square class and init function
 """
 
+
 class BaseGeometry:
     """
     A base class for geometry-related operations.
