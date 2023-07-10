@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
-This module contains a rectangle class and _init_ function
+This module contains a square class and init function
 """
-
 
 class BaseGeometry:
     """
@@ -34,10 +33,11 @@ class Rectangle(BaseGeometry):
     Inherits from BaseGeometry.
 
     Public Methods:
-        __init__(self, width, height): Initializes a rectangle with
-        the given width and height.
+        __init__(self, width, height): Initializes a rectangle with the
+        given width and height.
         area(self): Calculates and returns the area of the rectangle.
-        __str__(self): Returns the string representation of the rectangle.
+        __str__(self): Returns the string representation of the
+        rectangle.
     """
 
     def __init__(self, width, height):
@@ -50,7 +50,8 @@ class Rectangle(BaseGeometry):
 
         Raises:
             TypeError: If width or height is not an integer.
-            ValueError: If width or height is not a positive integer.
+            ValueError: If width or height is not a positive
+            integer.
         """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
@@ -74,3 +75,39 @@ class Rectangle(BaseGeometry):
             str: The string representation of the rectangle.
         """
         return f"[Rectangle] {self.__width}/{self.__height}"
+
+
+class Square(Rectangle):
+    """
+    Represents a square.
+
+    Inherits from Rectangle.
+
+    Public Methods:
+        __init__(self, size): Initializes a square with the
+        given size.
+    """
+
+    def __init__(self, size):
+        """
+        Initializes a square with the given size.
+
+        Args:
+            size (int): The size of the square.
+
+        Raises:
+            TypeError: If size is not an integer.
+            ValueError: If size is not positive.
+        """
+        self.integer_validator("size", size)
+        super().__init__(size, size)
+        self.__size = size
+
+    def __str__(self):
+        """
+        Returns the string representation of the square.
+
+        Returns:
+            str: The string representation of the square.
+        """
+        return f"[Square] {self.__size}/{self.__size}"
