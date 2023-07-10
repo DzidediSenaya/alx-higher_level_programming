@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+"""
+This module contains the lookup function and two classes: MyClass1 and MyClass2.
+"""
+
 def lookup(obj):
     """
     Returns a list of available attributes and methods
@@ -14,12 +19,17 @@ def lookup(obj):
     return dir(obj)
 
 
-    """This is MyClass1."""
-    class MyClass1(object):
+class MyClass1(object):
+    """
+    This is MyClass1.
+    """
+    pass
 
 
-    """This is MyClass2."""
-    class MyClass2(object):
+class MyClass2(object):
+    """
+    This is MyClass2.
+    """
     my_attr1 = 3
 
     def my_meth(self):
