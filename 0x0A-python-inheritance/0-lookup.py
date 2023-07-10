@@ -14,16 +14,12 @@ def lookup(obj):
     return dir(obj)
 
 
-class MyClass1(object):
-    """
-    This is MyClass1.
-    """
+    """This is MyClass1."""
+    class MyClass1(object):
 
 
-class MyClass2(object):
-    """
-    This is MyClass2.
-    """
+    """This is MyClass2."""
+    class MyClass2(object):
     my_attr1 = 3
 
     def my_meth(self):
