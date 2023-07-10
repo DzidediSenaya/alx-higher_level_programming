@@ -4,7 +4,7 @@ This module contains a rectangle class
 """
 
 
-class Rectangle:
+class Rectangle(BaseGeometry):
     """
     Represents a rectangle.
 
