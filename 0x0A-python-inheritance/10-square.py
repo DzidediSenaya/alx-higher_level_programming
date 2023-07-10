@@ -4,8 +4,6 @@ This module contains a square class and init function
 """
 
 
-#!/usr/bin/python3
-
 class BaseGeometry:
     """
     A base class for geometry-related operations.
