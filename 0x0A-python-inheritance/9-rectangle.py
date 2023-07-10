@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This module contains a rectangle class and _init_ function
+"""
+
+
 class Rectangle(BaseGeometry):
     """
     A class representing a rectangle.
