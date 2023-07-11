@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
-"""
-Python script
-"""
+"""Module contains Python script"""
 
 import sys
 from 5-save_to_json_file import save_to_json_file
