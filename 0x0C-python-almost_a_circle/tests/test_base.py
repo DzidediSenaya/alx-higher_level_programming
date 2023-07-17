@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+Test case for base.py
+"""
+
 import unittest
 from models.base import Base
 
