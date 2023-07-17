@@ -12,8 +12,10 @@ class Base:
     Base class for managing id attribute in all future classes.
 
     Attributes:
-        __nb_objects (int): Private class attribute to track the number of objects created.
-        id (int): Public instance attribute representing the object's unique identifier.
+        __nb_objects (int): Private class attribute to track the
+        number of objects created.
+        id (int): Public instance attribute representing the
+        object's unique identifier.
     """
 
     __nb_objects = 0
@@ -103,7 +105,7 @@ class Base:
             dummy = cls(1, 1)  # Create a dummy instance
         elif cls.__name__ == "Square":
             dummy = cls(1)  # Create a dummy instance
-        dummy.update(**dictionary)  # Update the dummy instance with real values
+        dummy.update(**dictionary)   # use real values
         return dummy
 
     @classmethod
@@ -149,7 +151,8 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """
-        Deserializes instances from a CSV file and returns a list of instances.
+        Deserializes instances from a CSV file and returns
+        a list of instances.
 
         Returns:
             List of instances.

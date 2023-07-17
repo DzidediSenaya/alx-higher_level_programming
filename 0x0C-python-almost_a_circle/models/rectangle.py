@@ -69,9 +69,9 @@ class Rectangle(Base):
             str: The string representation of the Rectangle.
         """
         return (
-    f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
-    f"{self.width}/{self.height}"
-)
+            f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
+            f"{self.width}/{self.height}"
+        )
 
     def update(self, *args, **kwargs):
         """
