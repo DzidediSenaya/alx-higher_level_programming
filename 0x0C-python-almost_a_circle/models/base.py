@@ -5,6 +5,7 @@ Module contains the Base class
 """
 
 import turtle
+import csv
 
 
 class Base:
@@ -26,9 +27,6 @@ class Base:
 
         Args:
             id (int, optional): The object's identifier. Defaults to None.
-
-        Raises:
-            None.
 
         Returns:
             None.
@@ -117,6 +115,7 @@ class Base:
             List of instances.
         """
         import os.path
+        import json
         filename = cls.__name__ + ".json"
         if not os.path.isfile(filename):
             return []
@@ -138,15 +137,16 @@ class Base:
         """
         filename = cls.__name__ + ".csv"
         with open(filename, "w") as file:
+            writer = csv.writer(file)
             if list_objs is not None and len(list_objs) > 0:
                 if cls.__name__ == "Rectangle":
                     attributes = ["id", "width", "height", "x", "y"]
                 elif cls.__name__ == "Square":
                     attributes = ["id", "size", "x", "y"]
-                file.write(",".join(attributes) + "\n")
+                writer.writerow(attributes)
                 for obj in list_objs:
-                    values = [str(getattr(obj, attr)) for attr in attributes]
-                    file.write(",".join(values) + "\n")
+                    values = [getattr(obj, attr) for attr in attributes]
+                    writer.writerow(values)
 
     @classmethod
     def load_from_file_csv(cls):
@@ -157,7 +157,6 @@ class Base:
         Returns:
             List of instances.
         """
-        import csv
         filename = cls.__name__ + ".csv"
         instances = []
         with open(filename, "r") as file:
