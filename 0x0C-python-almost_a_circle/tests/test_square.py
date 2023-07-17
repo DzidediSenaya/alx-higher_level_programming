@@ -1,50 +1,51 @@
+#!/usr/bin/python3
 """
 This file contains test cases for square.py
 """
 
 
 import unittest
-from models.rectangle import Rectangle
+from models.square import Square
 
 
-class TestRectangle(unittest.TestCase):
+class TestSquare(unittest.TestCase):
     """
-    Test cases for the Rectangle class.
+    Test cases for the Square class.
     """
 
     def test_area(self):
         """
-        Test the area method of Rectangle.
+        Test the area method of Square.
         """
-        r1 = Rectangle(5, 10)
-        self.assertEqual(r1.area(), 50)
+        s1 = Square(5)
+        self.assertEqual(s1.area(), 25)
         
-        r2 = Rectangle(2, 8)
-        self.assertEqual(r2.area(), 16)
+        s2 = Square(8)
+        self.assertEqual(s2.area(), 64)
 
     def test_display(self):
         """
-        Test the display method of Rectangle.
+        Test the display method of Square.
         """
-        r1 = Rectangle(3, 2)
-        expected_output = "###\n###\n"
-        self.assertEqual(self.capture_stdout(r1.display), expected_output)
+        s1 = Square(3)
+        expected_output = "###\n###\n###\n"
+        self.assertEqual(self.capture_stdout(s1.display), expected_output)
         
-        r2 = Rectangle(2, 4, 1, 1)
-        expected_output = "\n ##\n ##\n"
-        self.assertEqual(self.capture_stdout(r2.display), expected_output)
+        s2 = Square(4, 1, 1)
+        expected_output = "\n ###\n ###\n ###\n"
+        self.assertEqual(self.capture_stdout(s2.display), expected_output)
 
     def test_str(self):
         """
-        Test the __str__ method of Rectangle.
+        Test the __str__ method of Square.
         """
-        r1 = Rectangle(4, 6, 2, 1, 12)
-        expected_output = "[Rectangle] (12) 2/1 - 4/6"
-        self.assertEqual(str(r1), expected_output)
+        s1 = Square(4, 2, 1, 12)
+        expected_output = "[Square] (12) 2/1 - 4"
+        self.assertEqual(str(s1), expected_output)
 
-        r2 = Rectangle(5, 5, 1)
-        expected_output = "[Rectangle] (1) 1/0 - 5/5"
-        self.assertEqual(str(r2), expected_output)
+        s2 = Square(5, 1, 0)
+        expected_output = "[Square] (1) 1/0 - 5"
+        self.assertEqual(str(s2), expected_output)
 
     def capture_stdout(self, func):
         """
