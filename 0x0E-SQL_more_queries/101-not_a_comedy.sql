@@ -1,6 +1,3 @@
--- Switch to the hbtn_0d_tvshows database
-USE hbtn_0d_tvshows;
-
 -- Get the show title(s) with the genre Comedy
 SELECT tv_shows.title
 FROM tv_shows
