@@ -1,6 +1,3 @@
--- Switch to the hbtn_0d_tvshows database
-USE hbtn_0d_tvshows;
-
 -- Select genre names for the show Dexter
 SELECT tv_genres.name
 FROM tv_genres
