@@ -1,6 +1,3 @@
--- Switch to the hbtn_0d_tvshows database
-USE hbtn_0d_tvshows;
-
 -- Select show titles and linked genre names
 SELECT tv_shows.title, IFNULL(tv_genres.name, 'NULL') AS name
 FROM tv_shows
