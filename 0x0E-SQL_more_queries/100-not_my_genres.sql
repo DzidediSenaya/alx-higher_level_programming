@@ -1,18 +1,17 @@
 -- Get the genre name(s) of the show Dexter
-SELECT tv_genres.name
-FROM tv_genres
-JOIN tv_show_genres ON tv_genres.id = tv_show_genres.genre_id
-JOIN tv_shows ON tv_show_genres.show_id = tv_shows.id
-WHERE tv_shows.title = 'Dexter';
-
--- Get genres not linked to the show Dexter
-SELECT name
-FROM tv_genres
-WHERE name NOT IN (
-    SELECT tv_genres.name
-    FROM tv_genres
-    JOIN tv_show_genres ON tv_genres.id = tv_show_genres.genre_id
-    JOIN tv_shows ON tv_show_genres.show_id = tv_shows.id
-    WHERE tv_shows.title = 'Dexter'
+SELECT DISTINCT `g`.`name`
+FROM `tv_genres` AS `g`
+INNER JOIN `tv_show_genres` AS `s`
+ON `g`.`id` = `s`.`genre_id`
+INNER JOIN `tv_shows` AS `t`
+ON `s`.`show_id` = `t`.`id`
+WHERE `g`.`name` NOT IN (
+  SELECT `g2`.`name`
+  FROM `tv_genres` AS `g2`
+  INNER JOIN `tv_show_genres` AS `s2`
+  ON `g2`.`id` = `s2`.`genre_id`
+  INNER JOIN `tv_shows` AS `t2`
+  ON `s2`.`show_id` = `t2`.`id`
+  WHERE `t2`.`title` = "Dexter"
 )
-ORDER BY name ASC;
+ORDER BY `g`.`name`;
