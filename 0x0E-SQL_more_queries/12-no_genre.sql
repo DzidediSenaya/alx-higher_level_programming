@@ -1,6 +1,3 @@
--- Switch to the hbtn_0d_tvshows database
-USE hbtn_0d_tvshows;
-
 -- Select shows without a genre linked
 SELECT tv_shows.title, tv_show_genres.genre_id
 FROM tv_shows

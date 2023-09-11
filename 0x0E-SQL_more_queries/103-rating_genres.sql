@@ -1,6 +1,10 @@
---Import the database dump from hbtn_0d_tvshows_rate to your MySQL server
-SELECT tv_genres.name, SUM(tv_show_genres.rating) AS rating_sum
-FROM tv_show_genres
-JOIN tv_genres ON tv_show_genres.genre_id = tv_genres.id
-GROUP BY tv_genres.name
-ORDER BY rating_sum DESC;
+-- Lists all genres in the database hbtn_0d_tvshows_rate by their rating in descending order.
+SELECT `name`, SUM(`rate`) AS `rating`
+  FROM `tv_genres` AS g
+       INNER JOIN `tv_show_genres` AS s
+       ON s.`genre_id` = g.`id`
+
+       INNER JOIN `tv_show_ratings` AS r
+       ON r.`show_id` = s.`show_id`
+ GROUP BY `name`
+ ORDER BY `rating` DESC;
