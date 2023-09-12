@@ -4,7 +4,7 @@ mandatory
 Write an empty class Rectangle that defines a rectangle:
 
 You must use the class notation for defining your class
-guillaume@ubuntu:~/0x13$ cat 0-main.js
+
 #!/usr/bin/node
 const Rectangle = require('./0-rectangle');
 
@@ -30,7 +30,7 @@ You must use the class notation for defining your class
 The constructor must take 2 arguments w and h
 Initialize the instance attribute width with the value of w
 Initialize the instance attribute height with the value of h
-guillaume@ubuntu:~/0x13$ cat 1-main.js
+
 #!/usr/bin/node
 const Rectangle = require('./1-rectangle');
 
@@ -49,7 +49,7 @@ console.log(r3);
 console.log(r3.width);
 console.log(r3.height);
 
-guillaume@ubuntu:~/0x13$ ./1-main.js
+
 Rectangle { width: 2, height: 3 }
 2
 3
@@ -59,7 +59,7 @@ Rectangle { width: 2, height: -3 }
 Rectangle { width: 2, height: undefined }
 2
 undefined
-guillaume@ubuntu:~/0x13$ 
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
@@ -75,7 +75,7 @@ The constructor must take 2 arguments w and h
 Initialize the instance attribute width with the value of w
 Initialize the instance attribute height with the value of h
 If w or h is equal to 0 or not a positive integer, create an empty object
-guillaume@ubuntu:~/0x13$ cat 2-main.js
+
 #!/usr/bin/node
 const Rectangle = require('./2-rectangle');
 
@@ -99,7 +99,6 @@ console.log(r4);
 console.log(r4.width);
 console.log(r4.height);
 
-guillaume@ubuntu:~/0x13$ ./2-main.js
 Rectangle { width: 2, height: 3 }
 2
 3
@@ -129,7 +128,7 @@ Initialize the instance attribute width with the value of w
 Initialize the instance attribute height with the value of h
 If w or h is equal to 0 or not a positive integer, create an empty object
 Create an instance method called print() that prints the rectangle using the character X
-guillaume@ubuntu:~/0x13$ cat 3-main.js
+
 #!/usr/bin/node
 const Rectangle = require('./3-rectangle');
 
@@ -167,7 +166,7 @@ If w or h is equal to 0 or not a positive integer, create an empty object
 Create an instance method called print() that prints the rectangle using the character X
 Create an instance method called rotate() that exchanges the width and the height of the rectangle
 Create an instance method called double() that multiples the width and the height of the rectangle by 2
-guillaume@ubuntu:~/0x13$ cat 4-main.js
+
 #!/usr/bin/node
 const Rectangle = require('./4-rectangle');
 
@@ -214,7 +213,7 @@ Write a class Square that defines a square and inherits from Rectangle of 4-rect
 You must use the class notation for defining your class and extends
 The constructor must take 1 argument: size
 The constructor of Rectangle must be called (by using super())
-guillaume@ubuntu:~/0x13$ cat 5-main.js
+
 #!/usr/bin/node
 const Square = require('./5-square');
 
@@ -250,7 +249,7 @@ Write a class Square that defines a square and inherits from Square of 5-square.
 You must use the class notation for defining your class and extends
 Create an instance method called charPrint(c) that prints the rectangle using the character c
 If c is undefined, use the character X
-guillaume@ubuntu:~/0x13$ cat 6-main.js
+
 #!/usr/bin/node
 const Square = require('./6-square');
 
@@ -268,8 +267,7 @@ CCCC
 CCCC
 CCCC
 CCCC
-guillaume@ubuntu:~/0x13$ 
-Repo:
+
 
 GitHub repository: alx-higher_level_programming
 Directory: 0x13-javascript_objects_scopes_closures
@@ -288,11 +286,10 @@ console.log(nbOccurences([1, 2, 3, 4, 5, 6], 3));
 console.log(nbOccurences([3, 2, 3, 4, 5, 3, 3], 3));
 console.log(nbOccurences(["S", 12, "c", "S", "School", 8], "S"));
 
-guillaume@ubuntu:~/0x13$ ./7-main.js
 1
 4
 2
-guillaume@ubuntu:~/0x13$ 
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
@@ -305,7 +302,7 @@ Write a function that returns the reversed version of a list:
 
 Prototype: exports.esrever = function (list)
 You are not allow to use the built-in method reverse
-guillaume@ubuntu:~/0x13$ cat 8-main.js
+
 #!/usr/bin/node
 const esrever = require('./8-esrever').esrever;
 
@@ -328,7 +325,7 @@ Write a function that prints the number of arguments already printed and the new
 
 Prototype: exports.logMe = function (item)
 Output format: <number arguments already printed>: <current argument value>
-guillaume@ubuntu:~/0x13$ cat 9-main.js
+
 #!/usr/bin/node
 const logMe = require('./9-logme').logMe;
 
@@ -336,7 +333,7 @@ logMe("Hello");
 logMe("Best");
 logMe("School");
 
-guillaume@ubuntu:~/0x13$ ./9-main.js
+
 0: Hello
 1: Best
 2: School
@@ -378,7 +375,7 @@ guillaume@ubuntu:~/0x13$ ./10-main.js
 2
 c
 59
-guillaume@ubuntu:~/0x13$ 
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
@@ -396,10 +393,11 @@ Print both the initial list and the new list
 guillaume@ubuntu:~/0x13$ cat 100-data.js
 #!/usr/bin/node
 exports.list = [1, 2, 3, 4, 5];
-guillaume@ubuntu:~/0x13$ ./100-map.js 
+
+ ./100-map.js 
 [ 1, 2, 3, 4, 5 ]
 [ 0, 2, 6, 12, 20 ]
-guillaume@ubuntu:~/0x13$ 
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
@@ -415,7 +413,9 @@ In the new dictionary:
 A key is a number of occurrences
 A value is the list of user ids
 Print the new dictionary at the end
-guillaume@ubuntu:~/0x13$ cat 101-data.js
+
+
+cat 101-data.js
 #!/usr/bin/node
 exports.dict = {
   89: 1,
@@ -425,9 +425,10 @@ exports.dict = {
   93: 1,
   94: 2
 };
-guillaume@ubuntu:~/0x13$ ./101-sorted.js 
+
+
 { '1': [ '89', '91', '93' ], '2': [ '90', '94' ], '3': [ '92' ] }
-guillaume@ubuntu:~/0x13$ 
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
@@ -449,7 +450,7 @@ guillaume@ubuntu:~/0x13$ ./102-concat.js fileA fileB fileC
 guillaume@ubuntu:~/0x13$ cat fileC
 C is fun!
 Python is Cool!!!
-guillaume@ubuntu:~/0x13$ 
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
