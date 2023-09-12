@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-const addMeMaybe = require('./102-add_me_maybe').addMeMaybe;
+function addMeMaybe (number, theFunction) {
+  theFunction(number + 1);
+}
 
-addMeMaybe(4, function (nb) {
-  console.log('New value: ' + nb);
-});
+exports.addMeMaybe = addMeMaybe;
