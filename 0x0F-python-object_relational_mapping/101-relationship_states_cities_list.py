@@ -4,10 +4,11 @@ Script that lists all State objects, and corresponding City objects,
 contained in the database hbtn_0e_101_usa.
 """
 import sys
-from relationship_city import Base, City
-from relationship_state import State
+from relationship_city import City
+from relationship_state import State, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
 
 if __name__ == "__main__":
     # Check and validate command-line arguments
@@ -25,6 +26,9 @@ if __name__ == "__main__":
         pool_pre_ping=True
     )
 
+    # Create all tables in the database
+    Base.metadata.create_all(engine)
+
     # Create a session to interact with the database
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -36,7 +40,7 @@ if __name__ == "__main__":
     for state in states:
         print("{}: {}".format(state.id, state.name))
         for city in sorted(state.cities, key=lambda x: x.id):
-            print("\t{}: {}".format(city.id, city.name))
+            print("    {}: {}".format(city.id, city.name))
 
     # Close the session
     session.close()
