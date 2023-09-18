@@ -4,36 +4,42 @@ Script that lists all states with a name starting with
 N from the database hbtn_0e_0_usa
 """
 import sys
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
-from model_state import Base, State
-
+import MySQLdb
 
 if __name__ == "__main__":
+    # Extract command-line arguments
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
+    search_name = sys.argv[4]
 
-    # Create a SQLAlchemy engine
-    engine = create_engine(
-        f'mysql+mysqldb://{username}:{password}@localhost:3306/{database}',
-        pool_pre_ping=True
+    # Connect to the MySQL server
+    db = MySQLdb.connect(
+        host="localhost",
+        user=username,
+        passwd=password,
+        db=database,
+        port=3306
     )
 
-    # Create a session to interact with the database
-    session = Session(engine)
+    # Create a cursor object
+    cursor = db.cursor()
 
-    # Query all states starting with 'N'
-    states = (
-        session.query(State)
-        .filter(State.name.like('N%'))
-        .order_by(State.id)
-        .all()
+    # Execute the SQL query to fetch states starting with the specified name
+    query = (
+        "SELECT * FROM states "
+        "WHERE name LIKE BINARY %s "
+        "ORDER BY id ASC"
     )
+    cursor.execute(query, (search_name + '%',))
 
-    # Print the IDs and names of the matching states
-    for state in states:
-        print(f"{state.id}: {state.name}")
+    # Fetch all the rows
+    rows = cursor.fetchall()
 
-    # Close the session
-    session.close()
+    # Print the results
+    for row in rows:
+        print(row)
+
+    # Close the cursor and database connection
+    cursor.close()
+    db.close()
