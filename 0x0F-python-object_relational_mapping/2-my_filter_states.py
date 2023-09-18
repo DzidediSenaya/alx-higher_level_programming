@@ -24,11 +24,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute the SQL query to fetch states matching the specified name
-    query = (
-        "SELECT * FROM states "
-        "WHERE name = %s "
-        "ORDER BY id ASC"
-    )
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
     cursor.execute(query, (search_name,))
 
     # Fetch all the rows
