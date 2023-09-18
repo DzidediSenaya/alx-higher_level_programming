@@ -10,14 +10,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
+    # Check and validate command-line arguments
+    if len(sys.argv) != 4:
+        print("Usage: {} <mysql username> <mysql password> <database name>"
+              .format(sys.argv[0]))
+        sys.exit(1)
+
     # Get command line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
 
     # Create a SQLAlchemy engine
     engine = create_engine(
-        f'mysql+mysqldb://{username}:{password}@localhost/{database}'
+        f'mysql+mysqldb://{username}:{password}@localhost:3306/{database}',
+        pool_pre_ping=True
     )
 
     # Create a session to interact with the database
@@ -30,7 +35,7 @@ if __name__ == "__main__":
     # Print the results
     for state in states:
         print("{}: {}".format(state.id, state.name))
-        for city in state.cities:
+        for city in sorted(state.cities, key=lambda x: x.id):
             print("\t{}: {}".format(city.id, city.name))
 
     # Close the session
