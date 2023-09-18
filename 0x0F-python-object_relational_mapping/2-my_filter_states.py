@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Script that takes in an argument and displays all values in the states table
-of hbtn_0e_0_usa where name matches the argument.
+of hbtn_0e_0_usa where name matches the argument in a case-sensitive manner.
 """
 import sys
 import MySQLdb
@@ -22,10 +22,10 @@ if __name__ == "__main__":
     # Create a cursor object
     cursor = db.cursor()
 
-    # Create the SQL query with user input using format
+    # Create the SQL query with user input using format and case-sensitive COLLATE
     query = (
         "SELECT * FROM states "
-        "WHERE name = '{}' "
+        "WHERE name COLLATE utf8_bin = '{}' "
         "ORDER BY id ASC"
     ).format(search_name)
 
