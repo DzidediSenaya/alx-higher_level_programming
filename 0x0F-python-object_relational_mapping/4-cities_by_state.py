@@ -3,31 +3,39 @@
 Script that lists all cities from the database hbtn_0e_4_usa
 """
 import sys
-from model_state import Base, State
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from model_city import City
-
+import MySQLdb
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    # Check and validate command-line arguments
+    if len(sys.argv) != 4:
+        print("Usage: {} <mysql username> <mysql password> <database name>"
+              .format(sys.argv[0]))
+        sys.exit(1)
 
-    # Create a SQLAlchemy engine
-    engine = create_engine(
-        f'mysql+mysqldb://{username}:{password}@localhost:3306/{database}',
-        pool_pre_ping=True
+    username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
+
+    # Connect to the MySQL server
+    db = MySQLdb.connect(
+        host="localhost",
+        user=username,
+        passwd=password,
+        db=database,
+        port=3306
     )
 
-    # Create a session to interact with the database
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    # Create a cursor object
+    cursor = db.cursor()
 
-    # Query all City objects and print their details
-    cities = session.query(City).order_by(City.id).all()
-    for city in cities:
-        print(f"{city.id}: {city.name}")
+    # Execute the SQL query to fetch all cities and print their details
+    cursor.execute("SELECT * FROM cities ORDER BY id ASC")
 
-    # Close the session
-    session.close()
+    # Fetch all the rows
+    rows = cursor.fetchall()
+
+    # Print the results
+    for row in rows:
+        print("{}: {}".format(row[0], row[1]))
+
+    # Close the cursor and database connection
+    cursor.close()
+    db.close()
